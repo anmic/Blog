@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+      <h1 class="pagination-centered">Login</h1>
+      <form method=post class="form">{% csrf_token %}
+        {% for field in form %}
+        {% if field.errors %}
+          <div class="control-group error">
+        {% else %}
+          <div class="control-group">
+        {% endif %}
+          <label class="control-label" for={{ field.label }}>
+            {{ field.label }}
+          </label>
+          <div class="controls">
+            {{ field }}
+            {% for error in field.errors %}
+            <span class="help-inline">{{ error }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %} <!-- End form -->
+
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn pull-left">Login</button>
+            <h4 class="pull-left"><a href="{% url "auth.views.register" %}">Register</a></h4>
+          </div>
+        </div>
+      </form>
+
+{% endblock %}

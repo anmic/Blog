@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+      <div class="pagination-centered"><h1>Register</h1></div>
+      <form class="form-horizontal" method="post">{% csrf_token %}
+        {% for field in form %}
+        {% if field.errors %}
+          <div class="control-group error">
+        {% else %}
+          <div class="control-group">
+        {% endif %}
+          <label class="control-label" for={{ field.label }}>
+            {{ field.label }}
+          </label>
+          <div class="controls">
+            <input name="{{ field.html_name }}" class="input-large" type="text" id={{ field.label }} placeholder={{ field.label }}>
+            {% for error in field.errors %}
+            <span class="help-inline">{{ error }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Register</button>
+          </div>
+        </div>
+      </form>
+
+{% endblock %}

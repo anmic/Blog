@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="articles"><!-- Display one article -->
+    {% if article %}
+
+      <div class="pull-right creation_time">
+        {{ article.creation_time }}
+      </div>
+      <div>
+        <h3>
+          <a href="{{ article.get_absolute_url }}"> {{ article.title }} </a>
+          <small><a href="{{ article.url_to_edit_object }}"> Edit </a></small>
+        </h3>
+      </div>
+      <div>
+        <p>{{ article.text|safe }}<p>
+      </div>
+
+    {% else %}
+      <div><em>Unbelievable. No articles here so far.</em></div>
+    {% endif %}
+    </div>
+
+{% endblock %}

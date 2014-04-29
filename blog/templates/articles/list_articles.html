@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="articles"><!-- Display all articles -->
+    {% if articles %}
+      {% for article in articles %}
+      <div class="pull-right creation_time">
+        {{ article.creation_time }}
+      </div>
+      <div>
+        <h3>
+          <a href="{{ article.get_absolute_url }}"> {{ article.title }} </a>
+          <small><a href="{{ article.url_to_edit_object }}"> Edit </a></small>
+        </h3>
+      </div>
+      <div>
+        <p>{{ article.html_text|safe }}<p>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div><em>Unbelievable. No articles here so far.</em></div>
+    {% endif %}
+    </div>
+
+    {% if user.is_authenticated %} <!-- Display Forms -->
+    <form method="POST">{% csrf_token %}
+      {% for field in form %}
+        <div class="control-group{% if field.errors %} error{% endif %}">
+          <label class="control-label" for={{ field.label }}>
+            {{ field.label }}
+          </label>
+          <div class="controls">
+            {{ field }}
+            {% for error in field.errors %}
+            <span class="help-inline">{{ error }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Add post</button>
+          </div>
+        </div>
+    </form>
+    {% endif %}
+{% endblock %}

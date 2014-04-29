@@ -1,0 +1,36 @@
+@import "bootstrap.css";
+
+textarea {
+  resize: none;
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+
+.articles        { list-style: none; margin: 0; padding: 0;}
+
+div .creation_time { margin-top:10px;}
+
+.span10.is-padded {
+    width: 736px; /* 750 - (18x2) */
+    padding: 18px;
+}
+
+div .navbarlogo {
+  float: none;
+  padding: 10px 0px 10px;
+  color: #777777;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+div .navbar {
+  float: none;
+  padding: 10px 16px 10px;
+  margin:0px;
+  color: #777777;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+
